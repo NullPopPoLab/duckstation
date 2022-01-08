@@ -772,7 +772,7 @@ std::string LibretroHostInterface::GetBIOSDirectory()
   if (!g_retro_environment_callback(RETRO_ENVIRONMENT_GET_SYSTEM_DIRECTORY, &system_directory) || !system_directory)
     return GetProgramDirectoryRelativePath("system");
   else
-    return system_directory;
+    return std::string(system_directory)+"/psx";
 }
 
 std::unique_ptr<ByteStream> LibretroHostInterface::OpenPackageFile(const char* path, u32 flags)
